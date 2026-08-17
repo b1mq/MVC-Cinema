@@ -6,17 +6,27 @@ namespace WebApplication1.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        
+        private readonly FilmContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(FilmContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
         {
             return View();
         }
+        [HttpPost]
+        public async Task<IActionResult> Index(Film film)
+        {
+            _context.films.Add(film);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index", "Film");
+
+        }
+
 
         public IActionResult Privacy()
         {

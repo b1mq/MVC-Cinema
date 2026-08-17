@@ -13,7 +13,7 @@ namespace WebApplication1.Controllers
 
         public async Task<IActionResult> Index()
         {
-            IEnumerable<Film> films = await Task.Run(() => _db.Films);
+            IEnumerable<Film> films = await Task.Run(() => _db.films);
             return View(films);
         }
     }

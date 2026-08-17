@@ -3,6 +3,23 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Привет!</h1>
+    <p>Здесь ты можешь добавить фильм на свое усмотрение:)</p>
+</div>
+
+<div class="add-movie">
+    <form method="post">
+
+        <input type="text" name="Title" placeholder="Название..." required />
+        <input type="text" name="Description" placeholder="Описание..." required />
+        <input type="text" name="Country" placeholder="Страна..." required />
+        <input type="number" name="Release_Year" placeholder="Год..." required />
+        <input type="text" name="Genre" placeholder="Жанр..." required />
+        <input type="text" name="Language" placeholder="Язык..." required />
+        <input type="text" name="Director" placeholder="Режиссер..." required />
+        <input type="number" name="Rating" step="0.1" placeholder="Оценка (1.0 - 10.0)..." required min="1.0" max="10.0" />
+        <input type="url" name="Poster_Url" placeholder="Url Poster..." required />
+
+        <button type="submit" class="submit-btn">Добавить фильм</button>
+    </form>
 </div>
