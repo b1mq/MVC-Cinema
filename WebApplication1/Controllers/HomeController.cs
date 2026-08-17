@@ -26,6 +26,7 @@ namespace WebApplication1.Controllers
             return RedirectToAction("Index", "Film");
 
         }
+        
 
 
         public IActionResult Privacy()

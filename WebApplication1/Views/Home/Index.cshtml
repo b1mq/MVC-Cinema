@@ -1,6 +1,7 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = Model?.Film_id > 0 ? "Редактирование фильма" : "Добавление фильма";
 }
+@model WebApplication1.Models.Film
 
 <div class="text-center">
     <h1 class="display-4">Привет!</h1>
@@ -9,17 +10,17 @@
 
 <div class="add-movie">
     <form method="post">
+        <input type="hidden" asp-for="Film_id"/>
+        <input type="text" asp-for="Title" placeholder="Название..." required />
+        <input type="text" asp-for="Description" placeholder="Описание..." required />
+        <input type="text" asp-for="Country" placeholder="Страна..." required />
+        <input type="number" asp-for="Release_Year" placeholder="Год..." required />
+        <input type="text" asp-for="Genre" placeholder="Жанр..." required />
+        <input type="text" asp-for="Language" placeholder="Язык..." required />
+        <input type="text" asp-for="Director" placeholder="Режиссер..." required />
+        <input type="number" asp-for="Rating" step="0.1" placeholder="Оценка (1.0 - 10.0)..." required min="1.0" max="10.0" />
+        <input type="url" asp-for="Poster_Url" placeholder="Url Poster..." required />
 
-        <input type="text" name="Title" placeholder="Название..." required />
-        <input type="text" name="Description" placeholder="Описание..." required />
-        <input type="text" name="Country" placeholder="Страна..." required />
-        <input type="number" name="Release_Year" placeholder="Год..." required />
-        <input type="text" name="Genre" placeholder="Жанр..." required />
-        <input type="text" name="Language" placeholder="Язык..." required />
-        <input type="text" name="Director" placeholder="Режиссер..." required />
-        <input type="number" name="Rating" step="0.1" placeholder="Оценка (1.0 - 10.0)..." required min="1.0" max="10.0" />
-        <input type="url" name="Poster_Url" placeholder="Url Poster..." required />
-
-        <button type="submit" class="submit-btn">Добавить фильм</button>
+        <button type="submit" class="submit-btn">@(Model?.Film_id > 0?"Изменить" : "Добавить")</button>
     </form>
 </div>
