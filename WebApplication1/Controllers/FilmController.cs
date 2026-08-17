@@ -45,6 +45,16 @@ namespace WebApplication1.Controllers
             await _db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
+        [HttpGet]
+        public async Task<IActionResult> More(int id)
+        {
+            var film = await _db.films.FindAsync(id);
+            if (film == null)
+            {
+                return NotFound();
+            }
+            return View("MoviePage",film);
+        }
 
       
     }

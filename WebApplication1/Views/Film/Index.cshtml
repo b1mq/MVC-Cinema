@@ -37,7 +37,8 @@
 
                             
                             <div class="movie-actions">
-                                <button class="btn btn-action">MORE</button>
+                                <a asp-controller="Film" asp-action="More" asp-route-id="@film.Film_id" class="btn btn-action">MORE</a>
+                               
                                 <a asp-controller="Film" asp-action="Edit" asp-route-id="@film.Film_id" class="btn btn-action">EDIT</a>
                                 
                                 <form asp-controller="Film" asp-action="Delete" asp-route-id="@film.Film_id" method="post"style="display:inline;">

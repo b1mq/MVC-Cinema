@@ -1,5 +1,5 @@
 html {
-    font-size: 14px;
+    font-size: 16px;
     position: relative;
     min-height: 100%;
 }
@@ -12,8 +12,9 @@ html {
 
 body {
     margin-bottom: 60px;
-    background-color: #f4f6f9; /* Мягкий светлый фон для контраста карточек */
-    color: #1e293b;
+    background-color: #121216; /* Глубокий темный фон */
+    color: #e2e8f0; /* Светло-серый читаемый текст */
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
@@ -29,42 +30,48 @@ body {
     text-align: start;
 }
 
+a {
+    color: inherit;
+}
+
+.btn:focus, .form-control:focus {
+    box-shadow: 0 0 0 2px #6366f1;
+}
+
 /* ==========================================
-   Основная карточка фильма
+   Список фильмов (Главная карточка)
    ========================================== */
 .movie-card {
     display: flex;
     gap: 20px;
-    background: #ffffff;
-    border: 1px solid #e2e8f0; /* Более тонкая премиальная рамка */
-    border-radius: 16px;
-    padding: 18px;
-    margin-bottom: 24px;
-    align-items: stretch;
-    box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05), 0 8px 10px -6px rgba(15, 23, 42, 0.03);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background: #1a1a22; /* Матовый темный блок */
+    border: 1px solid #2e2e3d;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
     .movie-card:hover {
         transform: translateY(-2px);
-        box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+        border-color: #4f46e5;
     }
 
-/* Высокий постер слева */
+/* Постер в списке */
 .poster-wrapper {
-    width: 140px;
+    width: 130px;
     flex-shrink: 0;
     overflow: hidden;
-    border-radius: 12px;
+    border-radius: 8px;
 }
 
 .poster-img {
     width: 100%;
     height: 100%;
-    min-height: 200px;
+    min-height: 180px;
     object-fit: cover;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
     transition: transform 0.3s ease;
 }
 
@@ -72,7 +79,7 @@ body {
     transform: scale(1.03);
 }
 
-/* Контейнер справа (INFO + Actions) */
+/* Контент карточки */
 .movie-content {
     display: flex;
     flex-direction: column;
@@ -80,212 +87,235 @@ body {
     flex-grow: 1;
 }
 
-/* Блок INFO */
 .movie-info {
-    border: 1px solid #e0e7ff; /* Мягкий индиго-бордюр */
-    border-radius: 12px;
-    padding: 16px;
-    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); /* Градиентная подложка */
-    flex-grow: 1;
-    margin-bottom: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .movie-header {
     display: flex;
     align-items: center;
-    gap: 12px;
-    margin-bottom: 12px;
+    gap: 10px;
 }
 
-/* Бейдж ID */
 .movie-id {
-    background: #4f46e5; /* Стильный Indigo-акцент */
-    color: #ffffff;
-    font-weight: 700;
-    padding: 3px 10px;
-    border-radius: 8px;
+    background: #2e2e3d;
+    color: #94a3b8;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 6px;
     font-size: 12px;
-    letter-spacing: 0.5px;
 }
 
 .movie-title {
-    font-size: 20px;
-    font-weight: 700;
-    color: #0f172a;
-    line-height: 1.3;
+    font-size: 18px;
+    font-weight: 600;
+    color: #f8fafc;
 }
 
 .movie-meta {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px 20px;
-    font-size: 14px;
-    color: #475569;
+    gap: 8px 16px;
+    font-size: 13px;
+    color: #94a3b8;
 }
 
+    .movie-meta strong {
+        color: #cbd5e1;
+    }
+
 .rating {
-    font-weight: 700;
-    color: #0f172a;
-    background: #fef3c7; /* Мягкая жёлтая плашка под рейтинг */
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 600;
+    color: #fbbf24;
+    background: rgba(251, 191, 36, 0.1);
     padding: 2px 8px;
     border-radius: 6px;
-    border: 1px solid #fde68a;
 }
 
 .star {
-    color: #d97706; /* Насыщенный янтарный цвет звезды */
+    color: #fbbf24;
 }
 
 /* ==========================================
-   Кнопки действий (Actions)
+   Кнопки действий
    ========================================== */
 .movie-actions {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
+    margin-top: 12px;
 }
 
-/* Прямоугольные кнопки MORE и EDIT */
 .btn-action {
-    border: 1px solid #cbd5e1;
-    border-radius: 8px;
-    background: #ffffff;
-    color: #334155;
-    padding: 8px 20px;
-    font-weight: 600;
+    border: 1px solid #2e2e3d;
+    border-radius: 6px;
+    background: #22222e;
+    color: #cbd5e1;
+    padding: 6px 14px;
+    font-weight: 500;
     font-size: 13px;
     cursor: pointer;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     text-decoration: none;
+    transition: all 0.2s ease;
 }
 
     .btn-action:hover {
-        background: #4f46e5;
+        background: #6366f1;
         color: #ffffff;
-        border-color: #4f46e5;
-        box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+        border-color: #6366f1;
     }
 
-/* Круглая кнопка DELETE */
 .btn-delete {
-    width: 38px;
-    height: 38px;
-    border: 1px solid #fecaca;
-    border-radius: 50%;
-    background: #fef2f2;
+    background: rgba(239, 68, 68, 0.1);
     color: #ef4444;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    border-radius: 6px;
+    padding: 6px 12px;
     cursor: pointer;
-    font-size: 14px;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 13px;
+    transition: all 0.2s ease;
 }
 
     .btn-delete:hover {
         background: #ef4444;
         color: #ffffff;
-        border-color: #ef4444;
-        box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
     }
+
 /* ==========================================
-   Контейнер формы добавления фильма
+   Детальная страница фильма (MoviePage)
    ========================================== */
-.add-movie {
-    max-width: 680px;
-    margin: 30px auto;
-    background: #ffffff;
-    padding: 32px;
-    border-radius: 16px;
-    border: 1px solid #e2e8f0;
-    box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05), 0 8px 10px -6px rgba(15, 23, 42, 0.03);
+.about-container {
+    display: flex;
+    gap: 2rem;
+    background: #1a1a22;
+    border: 1px solid #2e2e3d;
+    padding: 2rem;
+    border-radius: 12px;
+    color: #e2e8f0;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
 }
 
-    /* Сетка полей ввода (2 колонки) */
+.poster {
+    flex: 0 0 240px;
+    max-width: 240px;
+}
+
+    .poster img {
+        width: 100%;
+        border-radius: 8px;
+        object-fit: cover;
+    }
+
+.about-movie {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.about-container .btn-secondary {
+    margin-top: 1rem;
+    background-color: #22222e;
+    border: 1px solid #2e2e3d;
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+    color: #cbd5e1;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+    .about-container .btn-secondary:hover {
+        background-color: #2e2e3d;
+        color: #ffffff;
+    }
+
+/* ==========================================
+   Форма добавления / редактирования
+   ========================================== */
+.add-movie {
+    max-width: 600px;
+    margin: 30px auto;
+    background: #1a1a22;
+    padding: 28px;
+    border-radius: 12px;
+    border: 1px solid #2e2e3d;
+}
+
     .add-movie form {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
+        gap: 14px;
     }
 
-    /* Поля, занимающие всю ширину (Описание и Постер) */
     .add-movie input[name="Description"],
-    .add-movie input[name="Poster_Url"],
-    .add-movie input[name=" Poster_Url"] {
+    .add-movie input[name="Poster_Url"] {
         grid-column: span 2;
     }
 
-    /* Базовый стиль всех input */
     .add-movie input {
         width: 100%;
-        padding: 12px 16px;
+        padding: 10px 14px;
         font-size: 14px;
-        color: #0f172a;
-        background-color: #f8fafc;
-        border: 1px solid #cbd5e1;
-        border-radius: 10px;
+        color: #f8fafc;
+        background-color: #121216;
+        border: 1px solid #2e2e3d;
+        border-radius: 6px;
         outline: none;
-        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: border-color 0.2s ease;
         box-sizing: border-box;
     }
 
-        /* Эффект при наведении и фокусе */
-        .add-movie input:hover {
-            background-color: #ffffff;
-            border-color: #94a3b8;
-        }
-
         .add-movie input:focus {
-            background-color: #ffffff;
-            border-color: #4f46e5;
-            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15);
+            border-color: #6366f1;
         }
 
         .add-movie input::placeholder {
-            color: #94a3b8;
+            color: #64748b;
         }
 
-    /* Кнопка отправки */
     .add-movie .submit-btn {
         grid-column: span 2;
         margin-top: 8px;
-        padding: 14px;
-        font-size: 15px;
+        padding: 12px;
+        font-size: 14px;
         font-weight: 600;
         color: #ffffff;
-        background-color: #4f46e5;
+        background-color: #6366f1;
         border: none;
-        border-radius: 10px;
+        border-radius: 6px;
         cursor: pointer;
-        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+        transition: background-color 0.2s ease;
     }
 
         .add-movie .submit-btn:hover {
-            background-color: #4338ca;
-            transform: translateY(-1px);
-            box-shadow: 0 6px 16px rgba(79, 70, 229, 0.35);
+            background-color: #4f46e5;
         }
 
-        .add-movie .submit-btn:active {
-            transform: translateY(0);
-        }
-
-/* Адаптируемость под мобильные экраны */
+/* ==========================================
+   Адаптивность
+   ========================================== */
 @media (max-width: 576px) {
-    .add-movie {
-        padding: 20px;
-        margin: 16px;
+    .movie-card {
+        flex-direction: column;
     }
 
-        .add-movie form {
-            grid-template-columns: 1fr;
-        }
+    .poster-wrapper {
+        width: 100%;
+    }
 
-        .add-movie input[name="Description"],
-        .add-movie input[name="Poster_Url"],
-        .add-movie input[name=" Poster_Url"],
-        .add-movie .submit-btn {
-            grid-column: span 1;
-        }
+    .add-movie form {
+        grid-template-columns: 1fr;
+    }
+
+    .add-movie input[name="Description"],
+    .add-movie input[name="Poster_Url"],
+    .add-movie .submit-btn {
+        grid-column: span 1;
+    }
 }

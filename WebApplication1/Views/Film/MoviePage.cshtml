@@ -1,0 +1,37 @@
+﻿@model WebApplication1.Models.Film
+@{
+	ViewData["Title"] = "Top 10 Movies";
+
+}
+
+<div class="container pt-5">
+	@if (Model == null)
+	{
+		<div class="alert alert-info">Фильм не найден.</div>
+	}
+	else{
+			<h2>Подробнее о фильме:</h2>
+		<h3>@Model.Title</h3>
+		<div class="about-container">
+			<div class="poster">
+				<img src="@Model.Poster_Url" id="@Model.Film_id" />
+			</div>
+			<div class="about-movie">
+
+				<div class="movie-info">
+					<span><strong>Год:</strong> @Model.Release_Year</span>
+					<span><strong>Жанр:</strong> @Model.Genre</span>
+					<span><strong>Язык:</strong> @Model.Language</span>
+					<span><strong>Режиссер:</strong> @Model.Director</span>
+					<span class="rating">
+						<span class="star">&#9733;</span> @Model.Rating
+					</span>
+				</div>
+			</div>
+			<a asp-controller="Film" asp-action="Index" class="btn btn-secondary">Назад к списку </a>
+
+		</div>
+
+	}
+	
+</div>
