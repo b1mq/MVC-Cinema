@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Film>
+@{
+	ViewData["Title"] = "Top 10 Movies";
+	
+}
+
+<div class="container pt-5">
+	<h2>Топ 10 лучших фильмов</h2>
+	@if (!Model.Any()) {
+		<div class="alert info">Список фильмов пустой</div>
+	}else {
+		@foreach (var film in Model) {
+			<div class="movie-card">
+				<div class="poster-wrapper">
+					<img src ="@film.Poster_Url" alt action="@film.Title" class="poster-img"/>
+				</div>
+
+                        <div class="movie-content">
+                            <div class="movie-info">
+                                <div class="movie-header">
+                                    <span class="movie-id">@film.Film_id</span>
+                                    <span class="movie-title">@film.Title</span>
+                                </div>
+
+                                <div class="movie-meta">
+                                    <span><strong>Год:</strong> @film.Release_Year</span>
+                                    <span><strong>Жанр:</strong> @film.Genre</span>
+                                    <span><strong>Язык:</strong> @film.Language</span>
+                                    <span><strong>Режиссер:</strong> @film.Director</span>
+                                    <span class="rating">
+                                        <span class="star">&#9733;</span> @film.Rating
+                                    </span>
+                                </div>
+                            </div>
+
+                            
+                            <div class="movie-actions">
+                                <button class="btn btn-action">MORE</button>
+                                <button class="btn btn-action">EDIT</button>
+                                <button class="btn btn-delete" title="Delete">&#128465;</button>
+                            </div>
+                        </div>
+			</div>
+		}
+	}
+
+</div>
