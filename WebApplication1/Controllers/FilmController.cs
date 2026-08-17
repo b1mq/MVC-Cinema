@@ -5,15 +5,15 @@ namespace WebApplication1.Controllers
 {
     public class FilmController : Controller
     {
-        FilmsContext db;
-        public FilmController(FilmsContext db)
+        private readonly FilmContext _db;
+        public FilmController(FilmContext db)
         {
-            this.db = db;
+            _db = db;
         }
 
         public async Task<IActionResult> Index()
         {
-            IEnumerable<Film> films = await Task.Run(() => db.Films);
+            IEnumerable<Film> films = await Task.Run(() => _db.Films);
             return View(films);
         }
     }

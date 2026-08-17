@@ -11,7 +11,7 @@ namespace WebApplication1
             string? connection = builder.Configuration.GetConnectionString("DefaultConnection");
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-            builder.Services.AddDbContext<FilmsContext>(options => options.UseSqlServer(connection));
+            builder.Services.AddDbContext<FilmContext>(options => options.UseSqlServer(connection));
             
             builder.Services.AddControllersWithViews();
             var app = builder.Build();

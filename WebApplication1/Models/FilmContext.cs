@@ -2,12 +2,13 @@
 
 namespace WebApplication1.Models
 {
-    public class FilmsContext : DbContext
+    public class FilmContext : DbContext
     {
-        public DbSet<Film> Films { get; set; }
-        public FilmsContext(DbContextOptions<FilmsContext> options) : base(options)
+        public DbSet<Film> Films { get; set; } = null!;
+        public FilmContext(DbContextOptions<FilmContext> options) : base(options)
         {
-            if (Database.EnsureCreated())
+            Database.EnsureCreated();
+            if (!Films.Any())
             {
                 // заполнил с  помощью ИИ
                 Films?.Add(new Film
@@ -139,6 +140,7 @@ namespace WebApplication1.Models
                     Poster_Url = "https://m.media-amazon.com/images/M/MVBMTIzMzA5NTUyNV5BMl5BanBnXkFtZTcwNDg5NDM1Mg@@._V1_.jpg",
                     Rating = 8.7m
                 });
+                SaveChanges();
             }
         }
     }

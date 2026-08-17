@@ -7,8 +7,10 @@
 <div class="container pt-5">
 	<h2>Топ 10 лучших фильмов</h2>
 	@if (!Model.Any()) {
+
 		<div class="alert info">Список фильмов пустой</div>
-	}else {
+	}
+    else {
 		@foreach (var film in Model) {
 			<div class="movie-card">
 				<div class="poster-wrapper">
