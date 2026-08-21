@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Сторінку не знайдено — 404";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="film-grain"></div>
+
+    <div class="container movie-404">
+        <div class="error-image-container">
+            <img src="https://http.cat/images/404.jpg" alt="404" class="lost-cat-img" />
+        </div>
+
+        <div class="error-content">
+           
+            <h2>Отакої! Схоже, ця сцена вирізана.</h2>
+            <p>
+                Ми обшукали весь архів, але цю сторінку не знайшли.<br>
+                Можливо, посилання застаріло, або режисер змінив фінал.<br>
+                Але не хвилюйся — головна поки що на місці :)
+            </p>
+
+            <a asp-controller="Home" asp-action="Index" class="btn-home cinema-btn">
+                <span>На головну</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M13 5l7 7-7 7" />
+                </svg>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

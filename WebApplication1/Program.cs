@@ -16,6 +16,7 @@ namespace WebApplication1
             builder.Services.AddControllersWithViews();
             var app = builder.Build();
             app.UseStaticFiles();
+            app.UseStatusCodePagesWithReExecute("/Error404");
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
             {

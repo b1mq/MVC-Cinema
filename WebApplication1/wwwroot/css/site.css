@@ -12,8 +12,8 @@ html {
 
 body {
     margin-bottom: 60px;
-    background-color: #121216; /* Глубокий темный фон */
-    color: #e2e8f0; /* Светло-серый читаемый текст */
+    background-color: #121216;
+    color: #e2e8f0;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
@@ -38,13 +38,10 @@ a {
     box-shadow: 0 0 0 2px #6366f1;
 }
 
-/* ==========================================
-   Список фильмов (Главная карточка)
-   ========================================== */
 .movie-card {
     display: flex;
     gap: 20px;
-    background: #1a1a22; /* Матовый темный блок */
+    background: #1a1a22;
     border: 1px solid #2e2e3d;
     border-radius: 12px;
     padding: 16px;
@@ -58,7 +55,6 @@ a {
         border-color: #4f46e5;
     }
 
-/* Постер в списке */
 .poster-wrapper {
     width: 130px;
     flex-shrink: 0;
@@ -79,7 +75,6 @@ a {
     transform: scale(1.03);
 }
 
-/* Контент карточки */
 .movie-content {
     display: flex;
     flex-direction: column;
@@ -141,9 +136,6 @@ a {
     color: #fbbf24;
 }
 
-/* ==========================================
-   Кнопки действий
-   ========================================== */
 .movie-actions {
     display: flex;
     align-items: center;
@@ -186,9 +178,6 @@ a {
         color: #ffffff;
     }
 
-/* ==========================================
-   Детальная страница фильма (MoviePage)
-   ========================================== */
 .about-container {
     display: flex;
     gap: 2rem;
@@ -235,9 +224,6 @@ a {
         color: #ffffff;
     }
 
-/* ==========================================
-   Форма добавления / редактирования
-   ========================================== */
 .add-movie {
     max-width: 600px;
     margin: 30px auto;
@@ -297,9 +283,155 @@ a {
             background-color: #4f46e5;
         }
 
-/* ==========================================
-   Адаптивность
-   ========================================== */
+.film-grain {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48ZyBmaWxsPSIjRkZGRkZGIiBmaWxsLW9wYWNpdHk9IjAuMDQiPjxjaXJjbGUgY3g9IjU0LjUiIGN5PSI8Ni41IiByPSIxLjUiLz48Y2lyY2xlIGN4PSI4MS41IiBjeT0iMzcxLjUiIHI9IjEuNSIvPjxjaXJjbGUgY3g9IjI1My41IiBjeT0iMjgzLjUiIHI9IjEuNSIvPjxjaXJjbGUgY3g9IjM4NS41IiBjeT0iNjAuNSIgcjPSIxLjUiLz48Y2lyY2xlIGN4PSI0MTYuNSIgY3k9IjQzNS41IiByPSIxLjUiLz48L2c+PC9zdmc+');
+    background-size: 512px 512px;
+    opacity: 0.1;
+    pointer-events: none;
+    animation: grain 12s step-end infinite;
+}
+
+@keyframes grain {
+    0%, 100% {
+        transform: translate(0, 0);
+    }
+
+    10% {
+        transform: translate(-5%, -10%);
+    }
+
+    20% {
+        transform: translate(-15%, 5%);
+    }
+
+    30% {
+        transform: translate(7%, -25%);
+    }
+
+    40% {
+        transform: translate(-5%, 15%);
+    }
+
+    50% {
+        transform: translate(-15%, 10%);
+    }
+
+    60% {
+        transform: translate(15%, 0%);
+    }
+
+    70% {
+        transform: translate(0%, 15%);
+    }
+
+    80% {
+        transform: translate(3%, 35%);
+    }
+
+    90% {
+        transform: translate(-10%, 10%);
+    }
+}
+
+.container.movie-404 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    min-height: calc(100vh - 120px);
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+.error-image-container {
+    width: 100%;
+    max-width: 360px;
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    border-radius: 12px;
+    background-color: #1a1a22;
+    border: 1px solid #2e2e3d;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.lost-cat-img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
+
+.error-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.error-code {
+    font-size: 110px;
+    font-weight: 900;
+    line-height: 1;
+    margin: 0;
+    color: #6366f1;
+    text-shadow: 0 0 25px rgba(99, 102, 241, 0.3);
+}
+
+.movie-404 h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 16px 0 12px;
+    color: #f8fafc;
+}
+
+.movie-404 p {
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0 0 32px;
+    color: #94a3b8;
+}
+
+.cinema-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 28px;
+    background-color: #6366f1;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 14px rgba(99, 102, 241, 0.3);
+    border: none;
+}
+
+    .cinema-btn:hover {
+        background-color: #4f46e5;
+        color: #ffffff;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+    }
+
+    .cinema-btn:active {
+        transform: translateY(0);
+    }
+
+    .cinema-btn svg {
+        width: 20px;
+        height: 20px;
+    }
+
 @media (max-width: 576px) {
     .movie-card {
         flex-direction: column;
@@ -317,5 +449,17 @@ a {
     .add-movie input[name="Poster_Url"],
     .add-movie .submit-btn {
         grid-column: span 1;
+    }
+
+    .error-code {
+        font-size: 80px;
+    }
+
+    .movie-404 h2 {
+        font-size: 22px;
+    }
+
+    .movie-404 p {
+        font-size: 14px;
     }
 }
